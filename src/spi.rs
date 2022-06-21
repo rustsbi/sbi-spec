@@ -1,6 +1,6 @@
 ﻿//! Chapter 7. IPI Extension (EID #0x735049 "sPI: s-mode IPI")
 
-pub const EID_SPI: usize = crate::binary::eid_from_str("sPI") as _;
+pub const EID_SPI: usize = crate::eid_from_str("sPI") as _;
 pub use fid::*;
 
 /// §7.2

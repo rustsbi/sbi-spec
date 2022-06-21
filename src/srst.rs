@@ -1,6 +1,6 @@
 ﻿//! Chapter 10. System Reset Extension (EID #0x53525354 "SRST")
 
-pub const EID_SRST: usize = crate::binary::eid_from_str("SRST") as _;
+pub const EID_SRST: usize = crate::eid_from_str("SRST") as _;
 pub use fid::*;
 
 pub const RESET_TYPE_SHUTDOWN: u32 = 0;

@@ -70,14 +70,3 @@ impl SbiRet {
         }
     }
 }
-
-/// Converts SBI EID from str.
-pub(crate) const fn eid_from_str(name: &str) -> i32 {
-    match *name.as_bytes() {
-        [a] => a as _,
-        [a, b] => (a as i32) << 8 | b as i32,
-        [a, b, c] => (a as i32) << 16 | (b as i32) << 8 | c as i32,
-        [a, b, c, d] => (a as i32) << 24 | (b as i32) << 16 | (c as i32) << 8 | d as i32,
-        _ => unreachable!(),
-    }
-}

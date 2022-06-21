@@ -1,6 +1,6 @@
 ﻿//! Chapter 6. Timer Extension (EID #0x54494D45 "TIME")
 
-pub const EID_TIME: usize = crate::binary::eid_from_str("TIME") as _;
+pub const EID_TIME: usize = crate::eid_from_str("TIME") as _;
 pub use fid::*;
 
 /// §6.2

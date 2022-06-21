@@ -1,6 +1,6 @@
 ﻿//! Chapter 11. Performance Monitoring Unit Extension (EID #0x504D55 "PMU")
 
-pub const EID_PMU: usize = crate::binary::eid_from_str("PMU") as _;
+pub const EID_PMU: usize = crate::eid_from_str("PMU") as _;
 pub use fid::*;
 
 /// §11.11

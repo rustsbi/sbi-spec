@@ -1,6 +1,6 @@
 ﻿//! Chapter 8. RFENCE Extension (EID #0x52464E43 "RFNC")
 
-pub const EID_RFNC: usize = crate::binary::eid_from_str("RFNC") as _;
+pub const EID_RFNC: usize = crate::eid_from_str("RFNC") as _;
 pub use fid::*;
 
 /// §8.8

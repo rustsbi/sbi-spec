@@ -1,8 +1,7 @@
 ﻿#![no_std]
 
 // §3
-mod binary;
-pub use binary::*;
+pub mod binary;
 // §4
 pub mod base;
 // §5

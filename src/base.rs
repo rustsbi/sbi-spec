@@ -3,6 +3,8 @@
 pub const EID_BASE: usize = 0x10;
 pub use fid::*;
 
+pub const UNAVAILABLE_EXTENSION: usize = 0;
+
 /// §4.8
 mod fid {
     /// §4.1

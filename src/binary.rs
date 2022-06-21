@@ -69,4 +69,86 @@ impl SbiRet {
             unknown => Err(Error::Customed(unknown as _)),
         }
     }
+
+    /// Returns success SBI state with given `value`.
+    #[inline]
+    pub const fn ok(value: usize) -> Self {
+        Self {
+            error: RET_SUCCESS,
+            value,
+        }
+    }
+
+    /// The SBI call request failed for unknown reasons.
+    #[inline]
+    pub const fn failed() -> Self {
+        Self {
+            error: RET_ERR_FAILED,
+            value: 0,
+        }
+    }
+
+    /// SBI call failed due to not supported by target ISA,
+    /// operation type not supported,
+    /// or target operation type not implemented on purpose.
+    #[inline]
+    pub const fn not_supported() -> Self {
+        Self {
+            error: RET_ERR_NOT_SUPPORTED,
+            value: 0,
+        }
+    }
+
+    /// SBI call failed due to invalid hart mask parameter,
+    /// invalid target hart id,
+    /// invalid operation type,
+    /// or invalid resource index.
+    #[inline]
+    pub const fn invalid_param() -> Self {
+        Self {
+            error: RET_ERR_INVALID_PARAM,
+            value: 0,
+        }
+    }
+
+    /// SBI call failed for invalid mask start address,
+    /// not a valid physical address parameter,
+    /// or the target address is prohibited by PMP to run in supervisor mode.
+    #[inline]
+    pub const fn invalid_address() -> Self {
+        Self {
+            error: RET_ERR_INVALID_ADDRESS,
+            value: 0,
+        }
+    }
+
+    /// SBI call failed for the target resource is already available,
+    /// e.g. the target hart is already started when caller still request it to start.
+    #[inline]
+    pub const fn already_available() -> Self {
+        Self {
+            error: RET_ERR_ALREADY_AVAILABLE,
+            value: 0,
+        }
+    }
+
+    /// SBI call failed for the target resource is already started,
+    /// e.g. target performance counter is started.
+    #[inline]
+    pub const fn already_started() -> Self {
+        Self {
+            error: RET_ERR_ALREADY_STARTED,
+            value: 0,
+        }
+    }
+
+    /// SBI call failed for the target resource is already stopped,
+    /// e.g. target performance counter is stopped.
+    #[inline]
+    pub const fn already_stopped() -> Self {
+        Self {
+            error: RET_ERR_ALREADY_STOPPED,
+            value: 0,
+        }
+    }
 }

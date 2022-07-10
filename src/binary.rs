@@ -5,7 +5,7 @@
 /// > SBI functions must return a pair of values in a0 and a1,
 /// > with a0 returning an error code.
 /// > This is analogous to returning the C structure `SbiRet`.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Clone, Copy, PartialEq, Eq)]
 #[repr(C)]
 pub struct SbiRet {
     /// Error number
@@ -41,6 +41,7 @@ impl core::fmt::Debug for SbiRet {
     }
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Error {
     Failed,
     NotSupported,

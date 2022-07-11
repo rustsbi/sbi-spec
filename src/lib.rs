@@ -1,5 +1,5 @@
 ﻿#![no_std]
-#![deny(warnings, unsafe_code)]
+#![deny(warnings, unsafe_code, unstable_features)]
 
 // §3
 pub mod binary;

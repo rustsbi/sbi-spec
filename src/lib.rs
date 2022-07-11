@@ -1,8 +1,5 @@
 ﻿#![no_std]
 
-#[cfg(not(any(target_arch = "riscv64", target_arch = "riscv32")))]
-compile_error!("SBI is only available on RISC-V platforms");
-
 // §3
 pub mod binary;
 // §4

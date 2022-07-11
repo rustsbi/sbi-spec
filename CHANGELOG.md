@@ -10,6 +10,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ### Added
 
 ### Modified
+- Lift build target limit; now this crate would build on targets other than RISC-V
 
 ## [0.0.1] - 2022-07-11
 

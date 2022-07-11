@@ -19,3 +19,6 @@ default-target = "riscv64imac-unknown-none-elf"
 targets = [
     "riscv32imac-unknown-none-elf", "riscv64imac-unknown-none-elf",
 ]
+
+[dependencies]
+static_assertions = "1.1.0"

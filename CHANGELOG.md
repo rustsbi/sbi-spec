@@ -8,6 +8,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [Unreleased]
 
 ### Added
+
+### Modified
+
+## [0.0.2] - 2022-07-21
+
+### Added
 - A changelog to this project
 
 ### Modified
@@ -20,5 +26,6 @@ This is the first release of sbi-spec crate. This crate includes definition of R
 ### Added
 - Adapt to SBI specification version 1.0.0 ratified
 
-[Unreleased]: https://github.com/rustsbi/sbi-spec/compare/v0.0.1...HEAD
+[Unreleased]: https://github.com/rustsbi/sbi-spec/compare/v0.0.2...HEAD
+[0.0.2]: https://github.com/rustsbi/sbi-spec/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/rustsbi/sbi-spec/releases/tag/v0.0.1

@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
   check implementations during compilation, and provide an item list for developers
 - denied: warnings and unsafe code
 - a github workflow to check building
+- `SbiSpecVersion` type defination for sbi base
 
 ### Modified
 

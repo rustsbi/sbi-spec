@@ -1,9 +1,35 @@
 ﻿//! Chapter 4. Base Extension (EID #0x10)
 
 pub const EID_BASE: usize = 0x10;
+
 pub use fid::*;
 
 pub const UNAVAILABLE_EXTENSION: usize = 0;
+
+/// §4.1
+#[repr(transparent)]
+pub struct SbiSpecVersion(pub usize);
+
+impl SbiSpecVersion {
+    #[inline]
+    pub const fn major(&self) -> usize {
+        (self.0 >> 24) & ((1 << 7) - 1)
+    }
+
+    #[inline]
+    pub const fn minor(&self) -> usize {
+        self.0 & ((1 << 24) - 1)
+    }
+}
+
+use core::fmt::{Display, Formatter, Result};
+
+impl Display for SbiSpecVersion {
+    #[inline]
+    fn fmt(&self, f: &mut Formatter<'_>) -> Result {
+        write!(f, "{}.{}", self.major(), self.minor())
+    }
+}
 
 /// §4.8
 mod fid {

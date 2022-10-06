@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+### Modified
+
+### Removed
+
+## [0.0.3] - 2022-10-06
+
+### Added
+
 - deps: static_assertions
   check implementations during compilation, and provide an item list for developers
 - denied: warnings and unsafe code
@@ -41,6 +49,7 @@ This is the first release of sbi-spec crate. This crate includes definition of R
 
 - Adapt to SBI specification version 1.0.0 ratified
 
-[Unreleased]: https://github.com/rustsbi/sbi-spec/compare/v0.0.2...HEAD
+[Unreleased]: https://github.com/rustsbi/sbi-spec/compare/v0.0.3...HEAD
+[0.0.3]: https://github.com/rustsbi/sbi-spec/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/rustsbi/sbi-spec/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/rustsbi/sbi-spec/releases/tag/v0.0.1

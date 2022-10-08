@@ -55,39 +55,7 @@ pub enum Error {
 }
 
 impl SbiRet {
-    /// Converts to a [`Result`].
-    #[inline]
-    pub const fn into_result(self) -> Result<usize, Error> {
-        match self.error {
-            RET_SUCCESS => Ok(self.value),
-            RET_ERR_FAILED => Err(Error::Failed),
-            RET_ERR_NOT_SUPPORTED => Err(Error::NotSupported),
-            RET_ERR_INVALID_PARAM => Err(Error::InvalidParam),
-            RET_ERR_DENIED => Err(Error::Denied),
-            RET_ERR_INVALID_ADDRESS => Err(Error::InvalidAddress),
-            RET_ERR_ALREADY_AVAILABLE => Err(Error::AlreadyAvailable),
-            RET_ERR_ALREADY_STARTED => Err(Error::AlreadyStarted),
-            RET_ERR_ALREADY_STOPPED => Err(Error::AlreadyStopped),
-            unknown => Err(Error::Custom(unknown as _)),
-        }
-    }
-
-    /// Returns `true` if current SBI return succeeded
-    #[inline]
-    pub const fn is_ok(&self) -> bool {
-        match self.error {
-            RET_SUCCESS => true,
-            _ => false,
-        }
-    }
-
-    /// Returns `true` if current SBI return is an error
-    #[inline]
-    pub const fn is_err(&self) -> bool {
-        !self.is_ok()
-    }
-
-    /// Returns success SBI state with given `value`.
+    /// Returns success SBi state with given `value`.
     #[inline]
     pub const fn ok(value: usize) -> Self {
         Self {
@@ -167,5 +135,50 @@ impl SbiRet {
             error: RET_ERR_ALREADY_STOPPED,
             value: 0,
         }
+    }
+}
+
+impl SbiRet {
+    /// Converts to a [`Result`].
+    #[inline]
+    pub const fn into_result(self) -> Result<usize, Error> {
+        match self.error {
+            RET_SUCCESS => Ok(self.value),
+            RET_ERR_FAILED => Err(Error::Failed),
+            RET_ERR_NOT_SUPPORTED => Err(Error::NotSupported),
+            RET_ERR_INVALID_PARAM => Err(Error::InvalidParam),
+            RET_ERR_DENIED => Err(Error::Denied),
+            RET_ERR_INVALID_ADDRESS => Err(Error::InvalidAddress),
+            RET_ERR_ALREADY_AVAILABLE => Err(Error::AlreadyAvailable),
+            RET_ERR_ALREADY_STARTED => Err(Error::AlreadyStarted),
+            RET_ERR_ALREADY_STOPPED => Err(Error::AlreadyStopped),
+            unknown => Err(Error::Custom(unknown as _)),
+        }
+    }
+
+    /// Returns `true` if current SBI return succeeded
+    #[inline]
+    pub const fn is_ok(&self) -> bool {
+        match self.error {
+            RET_SUCCESS => true,
+            _ => false,
+        }
+    }
+
+    /// Returns `true` if current SBI return is an error
+    #[inline]
+    pub const fn is_err(&self) -> bool {
+        !self.is_ok()
+    }
+
+    /// Returns the contained SbiRet value, consuming the `self` value.
+    /// 
+    /// # Panics
+    ///
+    /// Panics if the value is an error SBI state with a panic message including the
+    /// passed message, and the content of the SBI state.
+    #[inline]
+    pub fn expect(self, msg: &str) -> usize {
+        self.into_result().expect(msg)
     }
 }

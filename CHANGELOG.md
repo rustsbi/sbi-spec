@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
-- Function `SbiRet::is_ok` and `is_err`
+- Function `SbiRet::is_ok`, `is_err` and `expect`
 
 ### Modified
 

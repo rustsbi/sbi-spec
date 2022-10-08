@@ -159,10 +159,7 @@ impl SbiRet {
     /// Returns `true` if current SBI return succeeded
     #[inline]
     pub const fn is_ok(&self) -> bool {
-        match self.error {
-            RET_SUCCESS => true,
-            _ => false,
-        }
+        matches!(self.error, RET_SUCCESS)
     }
 
     /// Returns `true` if current SBI return is an error
@@ -172,7 +169,7 @@ impl SbiRet {
     }
 
     /// Returns the contained SbiRet value, consuming the `self` value.
-    /// 
+    ///
     /// # Panics
     ///
     /// Panics if the value is an error SBI state with a panic message including the

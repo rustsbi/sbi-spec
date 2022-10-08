@@ -51,11 +51,12 @@ pub enum Error {
     AlreadyAvailable,
     AlreadyStarted,
     AlreadyStopped,
-    Customed(isize),
+    Custom(isize),
 }
 
 impl SbiRet {
     /// Converts to a [`Result`].
+    #[inline]
     pub const fn into_result(self) -> Result<usize, Error> {
         match self.error {
             RET_SUCCESS => Ok(self.value),
@@ -67,8 +68,23 @@ impl SbiRet {
             RET_ERR_ALREADY_AVAILABLE => Err(Error::AlreadyAvailable),
             RET_ERR_ALREADY_STARTED => Err(Error::AlreadyStarted),
             RET_ERR_ALREADY_STOPPED => Err(Error::AlreadyStopped),
-            unknown => Err(Error::Customed(unknown as _)),
+            unknown => Err(Error::Custom(unknown as _)),
         }
+    }
+
+    /// Returns `true` if current SBI return succeeded
+    #[inline]
+    pub const fn is_ok(&self) -> bool {
+        match self.error {
+            RET_SUCCESS => true,
+            _ => false,
+        }
+    }
+
+    /// Returns `true` if current SBI return is an error
+    #[inline]
+    pub const fn is_err(&self) -> bool {
+        !self.is_ok()
     }
 
     /// Returns success SBI state with given `value`.

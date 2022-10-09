@@ -1,32 +1,46 @@
-﻿//! Chapter 4. Base Extension (EID #0x10)
-
-pub const EID_BASE: usize = 0x10;
+//! Chapter 4. Base Extension (EID #0x10)
+use core::fmt;
 
 pub use fid::*;
+pub const EID_BASE: usize = 0x10;
 
+/// Default probe value for the target SBI extension is unavailable
 pub const UNAVAILABLE_EXTENSION: usize = 0;
 
-/// §4.1
+/// SBI specification version
+///
+/// Not to be confused with 'implementation version'.
+///
+/// Declared in §4.1
+#[derive(Clone, Copy, Debug)]
 #[repr(transparent)]
-pub struct SbiSpecVersion(pub usize);
+pub struct Version {
+    raw: usize,
+}
 
-impl SbiSpecVersion {
+impl Version {
+    /// Converts raw extension value into Version structure
     #[inline]
-    pub const fn major(&self) -> usize {
-        (self.0 >> 24) & ((1 << 7) - 1)
+    pub const fn from_raw(raw: usize) -> Self {
+        Self { raw }
     }
 
+    /// Reads major version of specification
+    #[inline]
+    pub const fn major(&self) -> usize {
+        (self.raw >> 24) & ((1 << 7) - 1)
+    }
+
+    /// Reads minor version of specification
     #[inline]
     pub const fn minor(&self) -> usize {
-        self.0 & ((1 << 24) - 1)
+        self.raw & ((1 << 24) - 1)
     }
 }
 
-use core::fmt::{Display, Formatter, Result};
-
-impl Display for SbiSpecVersion {
+impl fmt::Display for Version {
     #[inline]
-    fn fmt(&self, f: &mut Formatter<'_>) -> Result {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "{}.{}", self.major(), self.minor())
     }
 }
@@ -51,11 +65,18 @@ mod fid {
 
 /// §4.9
 pub mod impl_id {
+    /// Berkley Bootloader
     pub const BBL: usize = 0;
+    /// OpenSBI
     pub const OPEN_SBI: usize = 1;
+    /// Xvisor
     pub const XVISOR: usize = 2;
+    /// KVM
     pub const KVM: usize = 3;
+    /// RustSBI
     pub const RUST_SBI: usize = 4;
+    /// Diosix
     pub const DIOSIX: usize = 5;
+    /// Coffer
     pub const COFFER: usize = 6;
 }

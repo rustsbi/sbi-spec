@@ -95,6 +95,7 @@ mod tests {
         const_assert_eq!(6, impl_id::COFFER);
     }
     // §5
+    #[cfg(feature = "legacy")]
     #[test]
     fn test_legacy() {
         use crate::legacy::*;

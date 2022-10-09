@@ -13,3 +13,8 @@ edition = "2021"
 
 [dependencies]
 static_assertions = "1.1.0"
+
+[features]
+default = []
+# Support legacy extension; this feature is not included by default.
+legacy = []

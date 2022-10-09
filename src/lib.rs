@@ -22,6 +22,7 @@ pub mod binary;
 // §4
 pub mod base;
 // §5
+#[cfg(feature = "legacy")]
 pub mod legacy;
 // §6
 pub mod time;

@@ -81,7 +81,7 @@ pub enum Error {
 impl SbiRet {
     /// Returns success SBI state with given `value`.
     #[inline]
-    pub const fn ok(value: usize) -> Self {
+    pub const fn success(value: usize) -> Self {
         Self {
             error: RET_SUCCESS,
             value,
@@ -163,7 +163,7 @@ impl SbiRet {
 }
 
 impl SbiRet {
-    /// Converts to a [`Result`].
+    /// Converts to a [`Result`] of value and error.
     #[inline]
     pub const fn into_result(self) -> Result<usize, Error> {
         match self.error {

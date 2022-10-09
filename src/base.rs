@@ -2,6 +2,7 @@
 use core::fmt;
 
 pub use fid::*;
+/// Extension ID for RISC-V SBI Base extension
 pub const EID_BASE: usize = 0x10;
 
 /// Default probe value for the target SBI extension is unavailable
@@ -45,25 +46,41 @@ impl fmt::Display for Version {
     }
 }
 
-/// §4.8
+/// Declared in §4.8
 mod fid {
-    /// §4.1
+    /// Function ID to get the current SBI specification version
+    ///
+    /// Declared in §4.1
     pub const GET_SBI_SPEC_VERSION: usize = 0x0;
-    /// §4.2
+    /// Function ID to get the current SBI implementation ID
+    ///
+    /// Declared in §4.2
     pub const GET_SBI_IMPL_ID: usize = 0x1;
-    /// §4.3
+    /// Function ID to get the current SBI implementation version
+    ///
+    /// Declared in §4.3
     pub const GET_SBI_IMPL_VERSION: usize = 0x2;
-    /// §4.4
+    /// Function ID to probe information about one SBI extension from current environment
+    ///
+    /// Declared in §4.4
     pub const PROBE_EXTENSION: usize = 0x3;
-    /// §4.5
+    /// Function ID to get value of `mvendorid` register in current environment
+    ///
+    /// Declared in §4.5
     pub const GET_MVENDORID: usize = 0x4;
-    /// §4.6
+    /// Function ID to get value of `marchid` register in current environment
+    ///
+    /// Declared in §4.6
     pub const GET_MARCHID: usize = 0x5;
-    /// §4.7
+    /// Function ID to get value of `mimpid` register in current environment
+    ///
+    /// Declared in §4.7
     pub const GET_MIMPID: usize = 0x6;
 }
 
-/// §4.9
+/// SBI Implementation IDs
+///
+/// Declared in §4.9
 pub mod impl_id {
     /// Berkley Bootloader
     pub const BBL: usize = 0;

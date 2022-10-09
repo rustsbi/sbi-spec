@@ -1,5 +1,21 @@
+//! RISC-V SBI Specification structure and constant definitions
+//!
+//! This crate adapts to RISC-V SBI Specification verion 1.0.0 ratified.
+//! It provides structures in Rust semantics and best practices to simplify
+//! designs of RISC-V SBI ecosystem, both implementation and applications.
+//!
+//! You may find it convenient to use this library in a vast range of packages,
+//! from operating system kernels, hypervisors, to SBI bare metal implementations.
+//! This crate is `no_std` compatible and does not need dymanic memory allocation,
+//! which make it suitable for embedded development.
+//!
+//! Although this library is dedicated to RISC-V architecture, it does not limit
+//! which build target the dependents should compile into. For example, you are
+//! developing a RISC-V emulator on platforms other than RISC-V, the emulator
+//! designed on other platforms can still make use of `sbi-spec` structures to
+//! provide necessary features the emulated RISC-V environment would make use of.
 #![no_std]
-#![deny(warnings, unsafe_code, unstable_features)]
+#![deny(missing_docs, unsafe_code, unstable_features)]
 
 // §3
 pub mod binary;

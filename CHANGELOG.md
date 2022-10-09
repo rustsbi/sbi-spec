@@ -8,7 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
-- Function `SbiRet::is_ok`, `is_err` and `expect`
+- Various convenient functions to `SbiRet` structure
 - Add documents on whole `sbi-rt` crate to coply with `deny(missing_docs)`
 - Feature `legacy` to gate legacy SBI extension
 

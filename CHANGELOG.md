@@ -8,6 +8,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+### Modified
+
+### Fixed
+
+## [0.0.5] - 2023-02-16
+
+### Added
+
 - Adapt to RISC-V SBI specification version 2.0-rc1
 - `PMU_COUNTER_FW_READ_HIGH` function in `pmu` module for RV32 systems
 - SBI DBCN extension support
@@ -16,8 +24,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Modified
 
 - style: add period to docs
-
-### Fixed
 
 ## [0.0.4] - 2022-10-10
 
@@ -69,7 +75,8 @@ This is the first release of sbi-spec crate. This crate includes definition of R
 
 - Adapt to SBI specification version 1.0.0 ratified
 
-[Unreleased]: https://github.com/rustsbi/sbi-spec/compare/v0.0.4...HEAD
+[Unreleased]: https://github.com/rustsbi/sbi-spec/compare/v0.0.5...HEAD
+[0.0.5]: https://github.com/rustsbi/sbi-spec/compare/v0.0.4...v0.0.5
 [0.0.4]: https://github.com/rustsbi/sbi-spec/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/rustsbi/sbi-spec/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/rustsbi/sbi-spec/compare/v0.0.1...v0.0.2

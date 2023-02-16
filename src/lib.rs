@@ -1,6 +1,6 @@
 //! RISC-V SBI Specification structure and constant definitions
 //!
-//! This crate adapts to RISC-V SBI Specification verion 1.0.0 ratified.
+//! This crate adapts to RISC-V SBI Specification verion 2.0-rc1.
 //! It provides structures in Rust semantics and best practices to simplify
 //! designs of RISC-V SBI ecosystem, both implementation and applications.
 //!
@@ -180,6 +180,7 @@ mod tests {
         const_assert_eq!(3, PMU_COUNTER_START);
         const_assert_eq!(4, PMU_COUNTER_STOP);
         const_assert_eq!(5, PMU_COUNTER_FW_READ);
+        const_assert_eq!(6, PMU_COUNTER_FW_READ_HIGH);
     }
     // §12
     #[test]

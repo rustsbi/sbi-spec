@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Adapt to RISC-V SBI specification version 2.0-rc1
+- `PMU_COUNTER_FW_READ_HIGH` function in `pmu` module for RV32 systems
 - SBI DBCN extension support
 
 ### Modified

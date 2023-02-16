@@ -36,6 +36,8 @@ pub mod hsm;
 pub mod srst;
 // §11
 pub mod pmu;
+// §???? todo
+pub mod dbcn;
 
 /// Converts SBI EID from str.
 const fn eid_from_str(name: &str) -> i32 {
@@ -178,5 +180,14 @@ mod tests {
         const_assert_eq!(3, PMU_COUNTER_START);
         const_assert_eq!(4, PMU_COUNTER_STOP);
         const_assert_eq!(5, PMU_COUNTER_FW_READ);
+    }
+    // §12
+    #[test]
+    fn test_dbcn() {
+        use crate::dbcn::*;
+        const_assert_eq!(0x4442434E, EID_DBCN);
+        const_assert_eq!(0, CONSOLE_WRITE);
+        const_assert_eq!(1, CONSOLE_READ);
+        const_assert_eq!(2, CONSOLE_WRITE_BYTE);
     }
 }

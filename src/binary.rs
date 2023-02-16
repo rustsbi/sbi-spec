@@ -1,6 +1,6 @@
 //! Capture 3. Binary Encoding
 
-/// SBI functions return type
+/// SBI functions return type.
 ///
 /// > SBI functions must return a pair of values in a0 and a1,
 /// > with a0 returning an error code.
@@ -13,29 +13,29 @@
 #[derive(Clone, Copy, PartialEq, Eq)]
 #[repr(C)]
 pub struct SbiRet {
-    /// Error number
+    /// Error number.
     pub error: usize,
-    /// Result value
+    /// Result value.
     pub value: usize,
 }
 
-/// SBI success state return value
+/// SBI success state return value.
 pub const RET_SUCCESS: usize = 0;
-/// Error for SBI call failed for unknown reasons
+/// Error for SBI call failed for unknown reasons.
 pub const RET_ERR_FAILED: usize = -1isize as _;
-/// Error for target operation not supported
+/// Error for target operation not supported.
 pub const RET_ERR_NOT_SUPPORTED: usize = -2isize as _;
-/// Error for invalid parameter
+/// Error for invalid parameter.
 pub const RET_ERR_INVALID_PARAM: usize = -3isize as _;
-/// Error for denied (unused in standard extensions)
+/// Error for denied (unused in standard extensions).
 pub const RET_ERR_DENIED: usize = -4isize as _;
-/// Error for invalid address
+/// Error for invalid address.
 pub const RET_ERR_INVALID_ADDRESS: usize = -5isize as _;
-/// Error for resource already available
+/// Error for resource already available.
 pub const RET_ERR_ALREADY_AVAILABLE: usize = -6isize as _;
-/// Error for resource already started
+/// Error for resource already started.
 pub const RET_ERR_ALREADY_STARTED: usize = -7isize as _;
-/// Error for resource already stopped
+/// Error for resource already stopped.
 pub const RET_ERR_ALREADY_STOPPED: usize = -8isize as _;
 
 impl core::fmt::Debug for SbiRet {
@@ -55,26 +55,26 @@ impl core::fmt::Debug for SbiRet {
     }
 }
 
-/// RISC-V SBI error in enumeration
+/// RISC-V SBI error in enumeration.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Error {
-    /// Error for SBI call failed for unknown reasons
+    /// Error for SBI call failed for unknown reasons.
     Failed,
-    /// Error for target operation not supported
+    /// Error for target operation not supported.
     NotSupported,
-    /// Error for invalid parameter
+    /// Error for invalid parameter.
     InvalidParam,
-    /// Error for denied (unused in standard extensions)
+    /// Error for denied (unused in standard extensions).
     Denied,
-    /// Error for invalid address
+    /// Error for invalid address.
     InvalidAddress,
-    /// Error for resource already available
+    /// Error for resource already available.
     AlreadyAvailable,
-    /// Error for resource already started
+    /// Error for resource already started.
     AlreadyStarted,
-    /// Error for resource already stopped
+    /// Error for resource already stopped.
     AlreadyStopped,
-    /// Custom error code
+    /// Custom error code.
     Custom(isize),
 }
 
@@ -312,11 +312,12 @@ impl SbiRet {
         self.into_result().map(op)
     }
 
-    /// Returns the provided default (if error), or
-    /// applies a function to the contained value (if success).
+    /// Returns the provided default (if error),
+    /// or applies a function to the contained value (if success).
     ///
-    /// Arguments passed to `map_or` are eagerly evaluated; if you are passing
-    /// the result of a function call, it is recommended to use [`map_or_else`],
+    /// Arguments passed to `map_or` are eagerly evaluated;
+    /// if you are passing the result of a function call,
+    /// it is recommended to use [`map_or_else`],
     /// which is lazily evaluated.
     ///
     /// [`map_or_else`]: SbiRet::map_or_else
@@ -341,7 +342,6 @@ impl SbiRet {
     ///
     /// This function can be used to unpack a successful result
     /// while handling an error.
-    ///
     ///
     /// # Examples
     ///
@@ -371,7 +371,6 @@ impl SbiRet {
     ///
     /// This function can be used to pass through a successful result while handling
     /// an error.
-    ///
     ///
     /// # Examples
     ///
@@ -450,8 +449,8 @@ impl SbiRet {
     ///
     /// # Panics
     ///
-    /// Panics if the self is SBI success value, with a panic message including the
-    /// passed message, and the content of the success value.
+    /// Panics if the self is SBI success value, with a panic message
+    /// including the passed message, and the content of the success value.
     ///
     /// # Examples
     ///

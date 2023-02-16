@@ -1,4 +1,4 @@
-//! RISC-V SBI Specification structure and constant definitions
+//! RISC-V SBI Specification structure and constant definitions.
 //!
 //! This crate adapts to RISC-V SBI Specification verion 2.0-rc1.
 //! It provides structures in Rust semantics and best practices to simplify
@@ -36,7 +36,7 @@ pub mod hsm;
 pub mod srst;
 // §11
 pub mod pmu;
-// §???? todo
+// §12
 pub mod dbcn;
 
 /// Converts SBI EID from str.

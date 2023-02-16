@@ -33,5 +33,5 @@ mod fid {
     /// Function ID to provide the upper 32 bits of the current firmware counter value.
     ///
     /// Declared in §11.11.
-    pub const PMU_COUNTER_FW_READ_HIGH: usize = 6;
+    pub const PMU_COUNTER_FW_READ_HI: usize = 6;
 }

@@ -180,7 +180,7 @@ mod tests {
         const_assert_eq!(3, PMU_COUNTER_START);
         const_assert_eq!(4, PMU_COUNTER_STOP);
         const_assert_eq!(5, PMU_COUNTER_FW_READ);
-        const_assert_eq!(6, PMU_COUNTER_FW_READ_HIGH);
+        const_assert_eq!(6, PMU_COUNTER_FW_READ_HI);
     }
     // §12
     #[test]

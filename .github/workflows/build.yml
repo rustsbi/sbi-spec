@@ -42,7 +42,7 @@ jobs:
       - name: Check format
         run: cargo fmt --all --check
       - name: Check clippy
-        run: cargo clippy
+        run: cargo clippy -- -D warnings
       - name: Check build
         run: cargo build
       - name: Check test

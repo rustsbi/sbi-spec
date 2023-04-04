@@ -40,6 +40,8 @@ pub mod pmu;
 pub mod dbcn;
 // §13
 pub mod susp;
+// §14
+pub mod cppc;
 
 /// Converts SBI EID from str.
 const fn eid_from_str(name: &str) -> i32 {
@@ -199,5 +201,15 @@ mod tests {
         use crate::susp::*;
         const_assert_eq!(0x53555350, EID_SUSP);
         const_assert_eq!(0, SUSPEND);
+    }
+    // §14
+    #[test]
+    fn test_cppc() {
+        use crate::cppc::*;
+        const_assert_eq!(0x43505043, EID_CPPC);
+        const_assert_eq!(0, PROBE);
+        const_assert_eq!(1, READ);
+        const_assert_eq!(2, READ_HI);
+        const_assert_eq!(3, WRITE);
     }
 }

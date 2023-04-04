@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - `Physical` shared memory physical address range with type annotation in Chapter 3
 - Support to RISC-V SBI System Suspend extension
+- Support to CPPC extension
 
 ### Modified
 

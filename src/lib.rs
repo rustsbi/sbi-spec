@@ -185,6 +185,62 @@ mod tests {
         const_assert_eq!(4, PMU_COUNTER_STOP);
         const_assert_eq!(5, PMU_COUNTER_FW_READ);
         const_assert_eq!(6, PMU_COUNTER_FW_READ_HI);
+
+        const_assert_eq!(0, event_idx_type::PMU_EVENT_TYPE_HW);
+        const_assert_eq!(1, event_idx_type::PMU_EVENT_TYPE_HW_CACHE);
+        const_assert_eq!(2, event_idx_type::PMU_EVENT_TYPE_HW_RAW);
+        const_assert_eq!(15, event_idx_type::PMU_EVENT_TYPE_FW);
+
+        const_assert_eq!(0, hw_event_code::PMU_HW_NO_EVENT);
+        const_assert_eq!(1, hw_event_code::PMU_HW_CPU_CYCLES);
+        const_assert_eq!(2, hw_event_code::PMU_HW_INSTRUCTIONS);
+        const_assert_eq!(3, hw_event_code::PMU_HW_CACHE_REFERENCES);
+        const_assert_eq!(4, hw_event_code::PMU_HW_CACHE_MISSES);
+        const_assert_eq!(5, hw_event_code::PMU_HW_BRANCH_INSTRUCTIONS);
+        const_assert_eq!(6, hw_event_code::PMU_HW_BRANCH_MISSES);
+        const_assert_eq!(7, hw_event_code::PMU_HW_BUS_CYCLES);
+        const_assert_eq!(8, hw_event_code::PMU_HW_STALLED_CYCLES_FRONTEND);
+        const_assert_eq!(9, hw_event_code::PMU_HW_STALLED_CYCLES_BACKEND);
+        const_assert_eq!(10, hw_event_code::PMU_HW_REF_CPU_CYCLES);
+
+        const_assert_eq!(0, hw_cache_id::PMU_HW_CACHE_L1D);
+        const_assert_eq!(1, hw_cache_id::PMU_HW_CACHE_L1I);
+        const_assert_eq!(2, hw_cache_id::PMU_HW_CACHE_LL);
+        const_assert_eq!(3, hw_cache_id::PMU_HW_CACHE_DTLB);
+        const_assert_eq!(4, hw_cache_id::PMU_HW_CACHE_ITLB);
+        const_assert_eq!(5, hw_cache_id::PMU_HW_CACHE_BPU);
+        const_assert_eq!(6, hw_cache_id::PMU_HW_CACHE_NODE);
+
+        const_assert_eq!(0, hw_cache_op_id::PMU_HW_CACHE_OP_READ);
+        const_assert_eq!(1, hw_cache_op_id::PMU_HW_CACHE_OP_WRITE);
+        const_assert_eq!(2, hw_cache_op_id::PMU_HW_CACHE_OP_PREFETCH);
+
+        const_assert_eq!(0, hw_cache_op_result_id::PMU_HW_CACHE_RESULT_ACCESS);
+        const_assert_eq!(1, hw_cache_op_result_id::PMU_HW_CACHE_RESULT_MISS);
+
+        const_assert_eq!(0, fw_event_code::PMU_FW_MISALIGNED_LOAD);
+        const_assert_eq!(1, fw_event_code::PMU_FW_MISALIGNED_STORE);
+        const_assert_eq!(2, fw_event_code::PMU_FW_ACCESS_LOAD);
+        const_assert_eq!(3, fw_event_code::PMU_FW_ACCESS_STORE);
+        const_assert_eq!(4, fw_event_code::PMU_FW_ILLEGAL_INSN);
+        const_assert_eq!(5, fw_event_code::PMU_FW_SET_TIMER);
+        const_assert_eq!(6, fw_event_code::PMU_FW_IPI_SENT);
+        const_assert_eq!(7, fw_event_code::PMU_FW_IPI_RECEIVED);
+        const_assert_eq!(8, fw_event_code::PMU_FW_FENCE_I_SENT);
+        const_assert_eq!(9, fw_event_code::PMU_FW_FENCE_I_RECEIVED);
+        const_assert_eq!(10, fw_event_code::PMU_FW_SFENCE_VMA_SENT);
+        const_assert_eq!(11, fw_event_code::PMU_FW_SFENCE_VMA_RECEIVED);
+        const_assert_eq!(12, fw_event_code::PMU_FW_SFENCE_VMA_ASID_SENT);
+        const_assert_eq!(13, fw_event_code::PMU_FW_SFENCE_VMA_ASID_RECEIVED);
+        const_assert_eq!(14, fw_event_code::PMU_FW_HFENCE_GVMA_SENT);
+        const_assert_eq!(15, fw_event_code::PMU_FW_HFENCE_GVMA_RECEIVED);
+        const_assert_eq!(16, fw_event_code::PMU_FW_HFENCE_GVMA_VMID_SENT);
+        const_assert_eq!(17, fw_event_code::PMU_FW_HFENCE_GVMA_VMID_RECEIVED);
+        const_assert_eq!(18, fw_event_code::PMU_FW_HFENCE_VVMA_SENT);
+        const_assert_eq!(19, fw_event_code::PMU_FW_HFENCE_VVMA_RECEIVED);
+        const_assert_eq!(20, fw_event_code::PMU_FW_HFENCE_VVMA_ASID_SENT);
+        const_assert_eq!(21, fw_event_code::PMU_FW_HFENCE_VVMA_ASID_RECEIVED);
+        const_assert_eq!(65535, fw_event_code::PMU_FW_PLATFORM);
     }
     // §12
     #[test]

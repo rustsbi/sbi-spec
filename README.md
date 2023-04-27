@@ -1,6 +1,6 @@
 ﻿# SBI 标准的 Rust 实现
 
-[![CI](https://github.com/rustsbi/sbi-spec/actions/workflows/workflow.yml/badge.svg?branch=main)](https://github.com/rustsbi/sbi-spec/actions)
+[![CI](https://github.com/rustsbi/sbi-spec/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/rustsbi/sbi-spec/actions)
 [![Latest version](https://img.shields.io/crates/v/sbi-spec.svg)](https://crates.io/crates/sbi-spec)
 [![issue](https://img.shields.io/github/issues/rustsbi/sbi-spec)](https://github.com/rustsbi/sbi-spec/issues)
 [![Documentation](https://docs.rs/sbi-spec/badge.svg)](https://docs.rs/sbi-spec)

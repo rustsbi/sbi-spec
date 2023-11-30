@@ -42,6 +42,8 @@ pub mod dbcn;
 pub mod susp;
 // §14
 pub mod cppc;
+// §15
+pub mod nacl;
 
 /// Converts SBI EID from str.
 const fn eid_from_str(name: &str) -> i32 {
@@ -267,5 +269,21 @@ mod tests {
         const_assert_eq!(1, READ);
         const_assert_eq!(2, READ_HI);
         const_assert_eq!(3, WRITE);
+    }
+    // §15
+    #[test]
+    fn test_nacl() {
+        use crate::nacl::*;
+        const_assert_eq!(0x4E41434C, EID_NACL);
+        const_assert_eq!(0, PROBE_FEATURE);
+        const_assert_eq!(1, SET_SHMEM);
+        const_assert_eq!(2, SYNC_CSR);
+        const_assert_eq!(3, SYNC_HFENCE);
+        const_assert_eq!(4, SYNC_SRET);
+
+        const_assert_eq!(0, feature_id::SYNC_CSR);
+        const_assert_eq!(1, feature_id::SYNC_HFENCE);
+        const_assert_eq!(2, feature_id::SYNC_SRET);
+        const_assert_eq!(3, feature_id::AUTOSWAP_CSR);
     }
 }

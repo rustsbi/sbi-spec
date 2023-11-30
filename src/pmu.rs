@@ -34,6 +34,10 @@ mod fid {
     ///
     /// Declared in §11.11.
     pub const COUNTER_FW_READ_HI: usize = 6;
+    /// Function ID to set and enable the PMU snapshot shared memory.
+    ///
+    /// Declared in §11.12.
+    pub const SNAPSHOT_SET_SHMEM: usize = 7;
 }
 
 /// PMU Event Types.

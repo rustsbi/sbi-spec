@@ -189,6 +189,7 @@ mod tests {
         const_assert_eq!(4, COUNTER_STOP);
         const_assert_eq!(5, COUNTER_FW_READ);
         const_assert_eq!(6, COUNTER_FW_READ_HI);
+        const_assert_eq!(7, SNAPSHOT_SET_SHMEM);
 
         const_assert_eq!(0, event_idx_type::HW);
         const_assert_eq!(1, event_idx_type::HW_CACHE);

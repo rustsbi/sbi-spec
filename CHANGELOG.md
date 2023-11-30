@@ -17,6 +17,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 ### Fixed
 
 - Remove redundant prefixes in `PMU`
+- Add new function id `SNAPSHOT_SET_SHMEM` in `PMU`
 
 ## [0.0.6] - 2023-04-04
 

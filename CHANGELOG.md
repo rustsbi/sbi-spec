@@ -10,10 +10,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 - Support to PMU events in Chapter 11
 - Support `NACL` extension in Chapter 15
+- Support `STA` extension in Chapter 16
 
 ### Modified
 
 ### Fixed
+
+- Remove redundant prefixes in `PMU`
+- Add new function id `SNAPSHOT_SET_SHMEM` in `PMU`
 
 ## [0.0.6] - 2023-04-04
 

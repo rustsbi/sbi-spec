@@ -1,4 +1,4 @@
-//! Chapter 8. RFENCE Extension (EID #0x52464E43 "RFNC")
+//! Chapter 8. RFENCE Extension (EID #0x52464E43 "RFNC").
 
 /// Extension ID for Remote Fence extension.
 pub const EID_RFNC: usize = crate::eid_from_str("RFNC") as _;

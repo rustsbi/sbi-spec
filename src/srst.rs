@@ -1,4 +1,4 @@
-//! Chapter 10. System Reset Extension (EID #0x53525354 "SRST")
+//! Chapter 10. System Reset Extension (EID #0x53525354 "SRST").
 
 /// Extension ID for System Reset extension.
 pub const EID_SRST: usize = crate::eid_from_str("SRST") as _;

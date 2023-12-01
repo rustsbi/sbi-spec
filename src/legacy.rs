@@ -1,4 +1,4 @@
-﻿//! Chapter 5. Legacy Extensions (EIDs #0x00 - #0x0F)
+﻿//! Chapter 5. Legacy Extensions (EIDs #0x00 - #0x0F).
 
 pub use id::*;
 

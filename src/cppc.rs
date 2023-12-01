@@ -1,4 +1,4 @@
-//! Chapter 14. CPPC Extension (EID #0x43505043 "CPPC")
+//! Chapter 14. CPPC Extension (EID #0x43505043 "CPPC").
 
 /// Extension ID for CPPC Extension.
 pub const EID_CPPC: usize = crate::eid_from_str("CPPC") as _;

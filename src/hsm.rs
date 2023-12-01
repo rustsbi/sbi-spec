@@ -1,4 +1,4 @@
-//! Chapter 9. Hart State Management Extension (EID #0x48534D "HSM")
+//! Chapter 9. Hart State Management Extension (EID #0x48534D "HSM").
 
 /// Extension ID for Hart State Management extension.
 pub const EID_HSM: usize = crate::eid_from_str("HSM") as _;

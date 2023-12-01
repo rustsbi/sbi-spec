@@ -1,4 +1,4 @@
-//! Chapter 16. Steal-time Accounting Extension (EID #0x535441 "STA")
+//! Chapter 16. Steal-time Accounting Extension (EID #0x535441 "STA").
 
 /// Extension ID for Steal-time Accounting Extension.
 pub const EID_STA: usize = crate::eid_from_str("STA") as _;

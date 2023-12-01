@@ -1,4 +1,4 @@
-//! Chapter 4. Base Extension (EID #0x10)
+//! Chapter 4. Base Extension (EID #0x10).
 
 /// Extension ID for RISC-V SBI Base extension.
 pub const EID_BASE: usize = 0x10;

@@ -1,4 +1,4 @@
-//! Chapter 12. Debug Console Extension (EID #0x4442434E "DBCN")
+//! Chapter 12. Debug Console Extension (EID #0x4442434E "DBCN").
 
 /// Extension ID for Debug Console Extension.
 pub const EID_DBCN: usize = crate::eid_from_str("DBCN") as _;

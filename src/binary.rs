@@ -1,4 +1,4 @@
-//! Chapter 3. Binary Encoding
+//! Chapter 3. Binary Encoding.
 
 use core::marker::PhantomData;
 

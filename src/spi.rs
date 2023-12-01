@@ -1,4 +1,4 @@
-﻿//! Chapter 7. IPI Extension (EID #0x735049 "sPI: s-mode IPI")
+﻿//! Chapter 7. IPI Extension (EID #0x735049 "sPI: s-mode IPI").
 
 /// Extension ID for Inter-processor Interrupt extension.
 pub const EID_SPI: usize = crate::eid_from_str("sPI") as _;

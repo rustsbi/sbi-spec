@@ -1,4 +1,4 @@
-//! Chapter 11. Performance Monitoring Unit Extension (EID #0x504D55 "PMU")
+//! Chapter 11. Performance Monitoring Unit Extension (EID #0x504D55 "PMU").
 
 /// Extension ID for Performance Monitoring Unit extension.
 pub const EID_PMU: usize = crate::eid_from_str("PMU") as _;
@@ -43,29 +43,29 @@ mod fid {
 /// PMU Event Types.
 ///
 /// Declared in §11.
-pub mod event_idx_type {
+pub mod event_type {
     /// Type for all hardware general events.
     ///
     /// Declared in §11.1.
-    pub const HW: usize = 0;
+    pub const HARDWARE_GENERAL: usize = 0;
     /// Type for all hardware cache events.
     ///
     /// Declared in §11.2.
-    pub const HW_CACHE: usize = 1;
+    pub const HARDWARE_CACHE: usize = 1;
     /// Type for all hardware raw events.
     ///
     /// Declared in §11.3.
-    pub const HW_RAW: usize = 2;
+    pub const HARDWARE_RAW: usize = 2;
     /// Type for for all firmware events.
     ///
     /// Declared in §11.4.
-    pub const FW: usize = 15;
+    pub const FIRMWARE: usize = 15;
 }
 
 /// Hardware General Event Codes.
 ///
 /// Declared in §11.1.
-pub mod hw_event_code {
+pub mod hardware_event {
     /// Unused event because event_idx cannot be zero
     pub const NO_EVENT: usize = 0;
     /// Event for each CPU cycle
@@ -90,96 +90,98 @@ pub mod hw_event_code {
     pub const REF_CPU_CYCLES: usize = 10;
 }
 
-/// Hardware Cache Event ID
+/// Hardware Cache Event ID.
 ///
 /// Declared in §11.2.
-pub mod hw_cache_id {
-    /// Level1 data cache event
+pub mod cache_event {
+    /// Level 1 data cache event.
     pub const L1D: usize = 0;
-    /// Level1 instruction cache event
+    /// Level 1 instruction cache event.
     pub const L1I: usize = 1;
-    /// Last level cache event
+    /// Last level cache event.
     pub const LL: usize = 2;
-    /// Data TLB event
+    /// Data TLB event.
     pub const DTLB: usize = 3;
-    /// Instruction TLB event
+    /// Instruction TLB event.
     pub const ITLB: usize = 4;
-    /// Branch predictor unit event
+    /// Branch predictor unit event.
     pub const BPU: usize = 5;
-    /// NUMA node cache event
+    /// NUMA node cache event.
     pub const NODE: usize = 6;
 }
 
-/// Hardware Cache Operation ID
+/// Hardware Cache Operation ID.
 ///
 /// Declared in §11.2.
-pub mod hw_cache_op_id {
-    /// Read cache line
+pub mod cache_operation {
+    /// Read cache line.
     pub const READ: usize = 0;
-    /// Write cache line
+    /// Write cache line.
     pub const WRITE: usize = 1;
-    /// Prefetch cache line
+    /// Prefetch cache line.
     pub const PREFETCH: usize = 2;
 }
 
-/// Hardware Cache Operation Result ID
+/// Hardware Cache Operation Result ID.
 ///
 /// Declared in §11.2.
-pub mod hw_cache_op_result_id {
-    /// Cache access
+pub mod cache_result {
+    /// Cache access.
     pub const ACCESS: usize = 0;
-    /// Cache miss
+    /// Cache miss.
     pub const MISS: usize = 1;
 }
 
 /// Firmware Event Codes.
 ///
 /// Declared in §11.4.
-pub mod fw_event_code {
-    /// Misaligned load trap event
+pub mod firmware_event {
+    /// Misaligned load trap event.
     pub const MISALIGNED_LOAD: usize = 0;
-    /// Misaligned store trap event
+    /// Misaligned store trap event.
     pub const MISALIGNED_STORE: usize = 1;
-    /// Load access trap event
+    /// Load access trap event.
     pub const ACCESS_LOAD: usize = 2;
-    /// Store access trap event
+    /// Store access trap event.
     pub const ACCESS_STORE: usize = 3;
-    /// Illegal instruction trap event
+    /// Illegal instruction trap event.
     pub const ILLEGAL_INSN: usize = 4;
-    /// Set timer event
+    /// Set timer event.
     pub const SET_TIMER: usize = 5;
-    /// Sent IPI to other HART event
+    /// Sent IPI to other HART event.
     pub const IPI_SENT: usize = 6;
-    /// Received IPI from other HART event
+    /// Received IPI from other HART event.
     pub const IPI_RECEIVED: usize = 7;
-    /// Sent FENCE.I request to other HART event
+    /// Sent FENCE.I request to other HART event.
     pub const FENCE_I_SENT: usize = 8;
-    /// Received FENCE.I request from other HART event
+    /// Received FENCE.I request from other HART event.
     pub const FENCE_I_RECEIVED: usize = 9;
-    /// Sent SFENCE.VMA request to other HART event
+    /// Sent SFENCE.VMA request to other HART event.
     pub const SFENCE_VMA_SENT: usize = 10;
-    /// Received SFENCE.VMA request from other HART event
+    /// Received SFENCE.VMA request from other HART event.
     pub const SFENCE_VMA_RECEIVED: usize = 11;
-    /// Sent SFENCE.VMA with ASID request to other HART event
+    /// Sent SFENCE.VMA with ASID request to other HART event.
     pub const SFENCE_VMA_ASID_SENT: usize = 12;
-    /// Received SFENCE.VMA with ASID request from other HART event
+    /// Received SFENCE.VMA with ASID request from other HART event.
     pub const SFENCE_VMA_ASID_RECEIVED: usize = 13;
-    /// Sent HFENCE.GVMA request to other HART event
+    /// Sent HFENCE.GVMA request to other HART event.
     pub const HFENCE_GVMA_SENT: usize = 14;
-    /// Received HFENCE.GVMA request from other HART event
+    /// Received HFENCE.GVMA request from other HART event.
     pub const HFENCE_GVMA_RECEIVED: usize = 15;
-    /// Sent HFENCE.GVMA with VMID request to other HART event
+    /// Sent HFENCE.GVMA with VMID request to other HART event.
     pub const HFENCE_GVMA_VMID_SENT: usize = 16;
-    /// Received HFENCE.GVMA with VMID request from other HART event
+    /// Received HFENCE.GVMA with VMID request from other HART event.
     pub const HFENCE_GVMA_VMID_RECEIVED: usize = 17;
-    /// Sent HFENCE.VVMA request to other HART event
+    /// Sent HFENCE.VVMA request to other HART event.
     pub const HFENCE_VVMA_SENT: usize = 18;
-    /// Received HFENCE.VVMA request from other HART event
+    /// Received HFENCE.VVMA request from other HART event.
     pub const HFENCE_VVMA_RECEIVED: usize = 19;
-    /// Sent HFENCE.VVMA with ASID request to other HART event
+    /// Sent HFENCE.VVMA with ASID request to other HART event.
     pub const HFENCE_VVMA_ASID_SENT: usize = 20;
-    /// Received HFENCE.VVMA with ASID request from other HART event
+    /// Received HFENCE.VVMA with ASID request from other HART event.
     pub const HFENCE_VVMA_ASID_RECEIVED: usize = 21;
-    /// RISC-V platform specific firmware events, where the `event_data` configuration (or parameter) contains the event encoding.
+    /// RISC-V platform specific firmware events.
+    ///
+    /// The `event_data` configuration (or parameter) contains the event encoding.
     pub const PLATFORM: usize = 65535;
 }

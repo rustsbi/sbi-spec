@@ -1,4 +1,4 @@
-//! Chapter 13. System Suspend Extension (EID #0x53555350 "SUSP")
+//! Chapter 13. System Suspend Extension (EID #0x53555350 "SUSP").
 
 /// Extension ID for System Suspend Extension.
 pub const EID_SUSP: usize = crate::eid_from_str("SUSP") as _;

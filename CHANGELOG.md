@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+`sbi-spec` crate now supports RISC-V SBI version 2.0-rc7.
+
 ### Added
 
 - Support to PMU events in Chapter 11

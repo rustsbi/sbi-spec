@@ -151,15 +151,15 @@ mod tests {
     fn test_hsm() {
         use crate::hsm::*;
         const_assert_eq!(0x48534D, EID_HSM);
-        const_assert_eq!(0, HART_STATE_STARTED);
-        const_assert_eq!(1, HART_STATE_STOPPED);
-        const_assert_eq!(2, HART_STATE_START_PENDING);
-        const_assert_eq!(3, HART_STATE_STOP_PENDING);
-        const_assert_eq!(4, HART_STATE_SUSPENDED);
-        const_assert_eq!(5, HART_STATE_SUSPEND_PENDING);
-        const_assert_eq!(6, HART_STATE_RESUME_PENDING);
-        const_assert_eq!(0x0000_0000, HART_SUSPEND_TYPE_RETENTIVE);
-        const_assert_eq!(0x8000_0000, HART_SUSPEND_TYPE_NON_RETENTIVE);
+        const_assert_eq!(0, hart_state::STARTED);
+        const_assert_eq!(1, hart_state::STOPPED);
+        const_assert_eq!(2, hart_state::START_PENDING);
+        const_assert_eq!(3, hart_state::STOP_PENDING);
+        const_assert_eq!(4, hart_state::SUSPENDED);
+        const_assert_eq!(5, hart_state::SUSPEND_PENDING);
+        const_assert_eq!(6, hart_state::RESUME_PENDING);
+        const_assert_eq!(0x0000_0000, suspend_type::RETENTIVE);
+        const_assert_eq!(0x8000_0000, suspend_type::NON_RETENTIVE);
         const_assert_eq!(0, HART_START);
         const_assert_eq!(1, HART_STOP);
         const_assert_eq!(2, HART_GET_STATUS);

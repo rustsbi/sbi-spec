@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Modified
 
+- Rearrange `HSM` constants into modules.
+
 ### Fixed
 
 - Remove redundant prefixes in `PMU`
@@ -92,7 +94,8 @@ This is the first release of sbi-spec crate. This crate includes definition of R
 
 - Adapt to SBI specification version 1.0.0 ratified
 
-[Unreleased]: https://github.com/rustsbi/sbi-spec/compare/v0.0.5...HEAD
+[Unreleased]: https://github.com/rustsbi/sbi-spec/compare/v0.0.6...HEAD
+[0.0.6]: https://github.com/rustsbi/sbi-spec/compare/v0.0.5...v0.0.6
 [0.0.5]: https://github.com/rustsbi/sbi-spec/compare/v0.0.4...v0.0.5
 [0.0.4]: https://github.com/rustsbi/sbi-spec/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/rustsbi/sbi-spec/compare/v0.0.2...v0.0.3

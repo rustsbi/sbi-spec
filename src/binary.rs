@@ -181,7 +181,7 @@ impl SbiRet {
         }
     }
 
-    /// SBICall failed for shared memory is not available.
+    /// SBI call failed for shared memory is not available,
     /// e.g. Nested acceleration shared memory is available.
     #[inline]
     pub const fn no_shmem() -> Self {

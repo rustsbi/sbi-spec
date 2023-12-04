@@ -39,6 +39,8 @@ pub const RET_ERR_ALREADY_AVAILABLE: usize = -6isize as _;
 pub const RET_ERR_ALREADY_STARTED: usize = -7isize as _;
 /// Error for resource already stopped.
 pub const RET_ERR_ALREADY_STOPPED: usize = -8isize as _;
+/// Error for shared memory not available.
+pub const RET_ERR_NO_SHMEM: usize = -9isize as _;
 
 impl core::fmt::Debug for SbiRet {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
@@ -52,6 +54,7 @@ impl core::fmt::Debug for SbiRet {
             RET_ERR_ALREADY_AVAILABLE => write!(f, "<SBI already available>"),
             RET_ERR_ALREADY_STARTED => write!(f, "<SBI already started>"),
             RET_ERR_ALREADY_STOPPED => write!(f, "<SBI already stopped>"),
+            RET_ERR_NO_SHMEM => write!(f, "<SBI shared memory not available>"),
             unknown => write!(f, "[SBI Unknown error: {unknown:#x}]"),
         }
     }
@@ -76,6 +79,8 @@ pub enum Error {
     AlreadyStarted,
     /// Error for resource already stopped.
     AlreadyStopped,
+    /// Error for shared memory not available.
+    NoShmem,
     /// Custom error code.
     Custom(isize),
 }
@@ -175,6 +180,16 @@ impl SbiRet {
             value: 0,
         }
     }
+
+    /// SBI call failed for shared memory is not available,
+    /// e.g. Nested acceleration shared memory is not available.
+    #[inline]
+    pub const fn no_shmem() -> Self {
+        Self {
+            error: RET_ERR_NO_SHMEM,
+            value: 0,
+        }
+    }
 }
 
 impl SbiRet {
@@ -191,6 +206,7 @@ impl SbiRet {
             RET_ERR_ALREADY_AVAILABLE => Err(Error::AlreadyAvailable),
             RET_ERR_ALREADY_STARTED => Err(Error::AlreadyStarted),
             RET_ERR_ALREADY_STOPPED => Err(Error::AlreadyStopped),
+            RET_ERR_NO_SHMEM => Err(Error::NoShmem),
             unknown => Err(Error::Custom(unknown as _)),
         }
     }

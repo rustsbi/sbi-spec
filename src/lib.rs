@@ -83,6 +83,7 @@ mod tests {
         const_assert_eq!(-6, RET_ERR_ALREADY_AVAILABLE as isize);
         const_assert_eq!(-7, RET_ERR_ALREADY_STARTED as isize);
         const_assert_eq!(-8, RET_ERR_ALREADY_STOPPED as isize);
+        const_assert_eq!(-9, RET_ERR_NO_SHMEM as isize);
     }
     // §4
     #[test]

@@ -182,7 +182,7 @@ impl SbiRet {
     }
 
     /// SBI call failed for shared memory is not available,
-    /// e.g. Nested acceleration shared memory is not available.
+    /// e.g. nested acceleration shared memory is not available.
     #[inline]
     pub const fn no_shmem() -> Self {
         Self {
@@ -673,10 +673,72 @@ impl SbiRet {
     }
 }
 
-/// Shared memory physical address range with type annotation.
+/// Physical slice wrapper with type annotation.
 ///
-/// This is a wrapper around a kind of pointer to represent that its value is
-/// indexed on physical address space.
+/// This struct wraps slices in RISC-V physical memory by low and high part of the
+/// physical base address as well as its length. It is usually used by SBI extensions
+/// as parameter types to pass base address and length parameters on physical memory
+/// other than a virtual one.
+///
+/// Generic parameter `P` represents a hint of how this physical slice would be used.
+/// For example, `Physical<&[u8]>` represents an immutable reference to physical byte slice,
+/// while `Physical<&mut [u8]>` represents a mutable one.
+///
+/// An SBI implementation should load or store memory using both `phys_addr_lo` and
+/// `phys_addr_hi` combined as base address. A supervisor program (kernels etc.)
+/// should provide continuous physical memory, wrapping its reference using this structure
+/// before passing into SBI runtime.
+#[derive(Clone, Copy)]
+pub struct Physical<P> {
+    num_bytes: usize,
+    phys_addr_lo: usize,
+    phys_addr_hi: usize,
+    _marker: PhantomData<P>,
+}
+
+impl<P> Physical<P> {
+    /// Create a physical memory slice by length and physical address.
+    #[inline]
+    pub const fn new(num_bytes: usize, phys_addr_lo: usize, phys_addr_hi: usize) -> Self {
+        Self {
+            num_bytes,
+            phys_addr_lo,
+            phys_addr_hi,
+            _marker: core::marker::PhantomData,
+        }
+    }
+
+    /// Returns length of the physical memory slice.
+    #[inline]
+    pub const fn num_bytes(&self) -> usize {
+        self.num_bytes
+    }
+
+    /// Returns low part base address of physical memory slice.
+    #[inline]
+    pub const fn phys_addr_lo(&self) -> usize {
+        self.phys_addr_lo
+    }
+
+    /// Returns high part base address of physical memory slice.
+    #[inline]
+    pub const fn phys_addr_hi(&self) -> usize {
+        self.phys_addr_hi
+    }
+}
+
+/// Shared memory physical address raw pointer with type annotation.
+///
+/// This is a structure wrapping a raw pointer to value of type `T` without
+/// pointer metadata. `SharedPtr`s are _thin_; they won't include metadata
+/// as RISC-V SBI does not provide an approach to pass them via SBI calls,
+/// thus the length of type `T` should be decided independently from raw
+/// pointer structure.
+///
+/// `SharedPtr` can be used as a parameter to pass shared memory physical pointer
+/// with given base address in RISC-V SBI calls. For example, a `SharedPtr<[u8; 64]>`
+/// would represent a fixed-size 64 byte array on a RISC-V SBI function argument
+/// type.
 ///
 /// This structure cannot be dereferenced directly with physical addresses,
 /// because on RISC-V systems the physical address space could be larger than the
@@ -705,41 +767,41 @@ impl SbiRet {
 /// It is recommended that a memory physical address passed to an SBI function
 /// should use at least two `usize` parameters to support platforms
 /// which have memory physical addresses wider than `XLEN` bits.
-#[derive(Clone, Copy)]
-pub struct Physical<P> {
-    num_bytes: usize,
+// FIXME: should constrain with `T: Thin` once ptr_metadata feature is stabled;
+// RISC-V SBI does not provide an approach to pass pointer metadata by SBI calls.
+pub struct SharedPtr<T> {
     phys_addr_lo: usize,
     phys_addr_hi: usize,
-    _marker: PhantomData<P>,
+    _marker: PhantomData<*const T>,
 }
 
-impl<P> Physical<P> {
-    /// Create a physical memory range by length and physical address.
+impl<T> SharedPtr<T> {
+    /// Create a shared physical memory pointer by physical address.
     #[inline]
-    pub const fn new(num_bytes: usize, phys_addr_lo: usize, phys_addr_hi: usize) -> Self {
+    pub const fn new(phys_addr_lo: usize, phys_addr_hi: usize) -> Self {
         Self {
-            num_bytes,
             phys_addr_lo,
             phys_addr_hi,
-            _marker: core::marker::PhantomData,
+            _marker: PhantomData,
         }
     }
-
-    /// Returns length of the physical address range.
+    /// Returns low part physical address of shared physical memory pointer.
     #[inline]
-    pub const fn num_bytes(&self) -> usize {
-        self.num_bytes
-    }
-
-    /// Returns low part of physical address range.
-    #[inline]
-    pub const fn phys_addr_lo(&self) -> usize {
+    pub const fn phys_addr_lo(self) -> usize {
         self.phys_addr_lo
     }
-
-    /// Returns high part of physical address range.
+    /// Returns high part physical address of shared physical memory pointer.
     #[inline]
-    pub const fn phys_addr_hi(&self) -> usize {
+    pub const fn phys_addr_hi(self) -> usize {
         self.phys_addr_hi
     }
 }
+
+impl<T> Clone for SharedPtr<T> {
+    #[inline(always)]
+    fn clone(&self) -> Self {
+        *self
+    }
+}
+
+impl<T> Copy for SharedPtr<T> {}

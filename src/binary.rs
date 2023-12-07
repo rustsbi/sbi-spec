@@ -745,6 +745,13 @@ impl<P> Physical<P> {
 /// virtual ones. Hence, this structure describes physical memory range by
 /// two `usize` values: the upper `phys_addr_hi` and lower `phys_addr_lo`.
 ///
+/// RISC-V SBI extensions may declare special pointer values for shared memory
+/// raw pointers. For example, SBI STA declares that steal-time information
+/// should stop from reporting when the SBI call is invoked using all-ones
+/// bitwise shared pointer, i.e. `phys_addr_hi` and `phys_addr_lo` both equals
+/// `usize::MAX`. `SharedPtr` can be constructed using such special values
+/// by providing them to the `SharedPtr::new` function.
+///
 /// # Requirements
 ///
 /// If an SBI function needs to pass a shared memory physical address range to
@@ -772,9 +779,11 @@ impl<P> Physical<P> {
 pub struct SharedPtr<T> {
     phys_addr_lo: usize,
     phys_addr_hi: usize,
-    _marker: PhantomData<*const T>,
+    _marker: PhantomData<*mut T>,
 }
 
+// FIXME: we should consider strict provenance rules for this pointer-like structure
+// once feature strict_provenance is stablized.
 impl<T> SharedPtr<T> {
     /// Create a shared physical memory pointer by physical address.
     #[inline]
@@ -785,11 +794,13 @@ impl<T> SharedPtr<T> {
             _marker: PhantomData,
         }
     }
+
     /// Returns low part physical address of shared physical memory pointer.
     #[inline]
     pub const fn phys_addr_lo(self) -> usize {
         self.phys_addr_lo
     }
+
     /// Returns high part physical address of shared physical memory pointer.
     #[inline]
     pub const fn phys_addr_hi(self) -> usize {

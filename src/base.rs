@@ -27,13 +27,13 @@ impl Version {
 
     /// Reads major version of specification.
     #[inline]
-    pub const fn major(&self) -> usize {
+    pub const fn major(self) -> usize {
         (self.raw >> 24) & ((1 << 7) - 1)
     }
 
     /// Reads minor version of specification.
     #[inline]
-    pub const fn minor(&self) -> usize {
+    pub const fn minor(self) -> usize {
         self.raw & ((1 << 24) - 1)
     }
 }

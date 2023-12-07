@@ -1,6 +1,6 @@
 //! RISC-V SBI Specification structure and constant definitions.
 //!
-//! This crate adapts to RISC-V SBI Specification verion 2.0-rc1.
+//! This crate adapts to RISC-V SBI Specification verion 2.0-rc7.
 //! It provides structures in Rust semantics and best practices to simplify
 //! designs of RISC-V SBI ecosystem, both implementation and applications.
 //!
@@ -290,6 +290,7 @@ mod tests {
         const_assert_eq!(2, feature_id::SYNC_SRET);
         const_assert_eq!(3, feature_id::AUTOSWAP_CSR);
     }
+    // §16
     #[test]
     fn test_sta() {
         use crate::sta::*;

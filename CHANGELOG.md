@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Support `STA` extension in Chapter 16
 - Add new SBI error `NoShmem`
 - binary: add `SharedPtr` struct to represent shared memory range feature.
+- nacl: add `shmem_size` module
 
 ### Modified
 

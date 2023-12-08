@@ -289,6 +289,24 @@ mod tests {
         const_assert_eq!(1, feature_id::SYNC_HFENCE);
         const_assert_eq!(2, feature_id::SYNC_SRET);
         const_assert_eq!(3, feature_id::AUTOSWAP_CSR);
+
+        const_assert_eq!(8192, shmem_size::RV32);
+        const_assert_eq!(12288, shmem_size::RV64);
+        const_assert_eq!(20480, shmem_size::RV128);
+        match () {
+            #[cfg(target_pointer_width = "32")]
+            () => {
+                const_assert_eq!(shmem_size::NATIVE, shmem_size::RV32);
+            }
+            #[cfg(target_pointer_width = "64")]
+            () => {
+                const_assert_eq!(shmem_size::NATIVE, shmem_size::RV64);
+            }
+            #[cfg(target_pointer_width = "128")]
+            () => {
+                const_assert_eq!(shmem_size::NATIVE, shmem_size::RV128);
+            }
+        }
     }
     // §16
     #[test]

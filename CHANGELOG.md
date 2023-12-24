@@ -24,6 +24,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Add new SBI error `NoShmem`
 - binary: add `SharedPtr` struct to represent shared memory range feature.
 - nacl: add `shmem_size` module
+- Move `HartMask` structure to `sbi-spec` crate from `rustsbi` crate.
 
 ### Modified
 

@@ -11,7 +11,7 @@ keywords = ["riscv", "sbi", "rustsbi"]
 categories = ["os", "embedded", "hardware-support", "no-std"]
 edition = "2021"
 
-[dependencies]
+[dev-dependencies]
 static_assertions = "1.1.0"
 
 [features]

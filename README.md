@@ -1,4 +1,8 @@
-﻿# SBI 标准的 Rust 实现
+# Repository archived
+
+This crate has been moved to repository [rustsbi/rustsbi](https://github.com/rustsbi/rustsbi). Please direct issues and pull requests to the new repository.
+
+ # SBI 标准的 Rust 实现
 
 [![CI](https://github.com/rustsbi/sbi-spec/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/rustsbi/sbi-spec/actions)
 [![Latest version](https://img.shields.io/crates/v/sbi-spec.svg)](https://crates.io/crates/sbi-spec)
